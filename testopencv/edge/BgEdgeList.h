@@ -18,6 +18,7 @@
 #ifndef _BG_EDGE_LIST_H
 #define _BG_EDGE_LIST_H
 
+#include "BgEdge.h"
 
 class BgEdgeList
 

@@ -7,6 +7,11 @@
 // Copyright:   (c) Bogdan Georgescu
 // Version:     v0.1
 /////////////////////////////////////////////////////////////////////////////
+#ifndef _BG_EDGE_DETECT_H
+#define _BG_EDGE_DETECT_H
+
+#include "BgImage.h"
+#include "BgEdgeList.h"
 
 #define PI 3.1415926535
 #define ZERO_TRESH 0.0000000001
@@ -167,3 +172,4 @@ protected:
    float* permGx_;
    float* permGy_; 
 };
+#endif // !_BG_EDGE_DETECT_H

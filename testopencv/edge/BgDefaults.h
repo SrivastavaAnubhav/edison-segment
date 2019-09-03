@@ -7,6 +7,8 @@
 // Copyright:   (c) Bogdan Georgescu
 // Version:     v0.1
 /////////////////////////////////////////////////////////////////////////////
+#ifndef _BG_DEFAULTS_H
+#define _BG_DEFAULTS_H
 
 #define PI 3.1415926535
 #define GTRESH PI/6
@@ -68,3 +70,4 @@ extern "C" int lmdif(int m, int n,double x[], double fvec[] , double ftol, doubl
 						 double wa3[], double wa4[]);
 extern void timer_start();
 extern void timer_stop();
+#endif // !_BG_DEFAULTS_H

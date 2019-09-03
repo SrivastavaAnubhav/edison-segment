@@ -7,6 +7,8 @@
 // Copyright:   (c) Bogdan Georgescu
 // Version:     v0.1
 /////////////////////////////////////////////////////////////////////////////
+#ifndef _BG_EDGE_H
+#define _BG_EDGE_H
 
 // 8-connected neighbour
 static const int gNb8[8][2]=
@@ -38,3 +40,5 @@ public:
    void SetPoints(int*, int);
    void SetGradient(float*,float*,float*,int);
 };
+#endif // !_BG_EDGE_H
+
