@@ -153,9 +153,6 @@
     <ClInclude Include="segm\rlist.h" />
     <ClInclude Include="segm\tdef.h" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="segm\MSReadme.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>

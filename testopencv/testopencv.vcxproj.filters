@@ -96,7 +96,4 @@
       <Filter>Header Files\edge</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="segm\MSReadme.txt" />
-  </ItemGroup>
 </Project>
