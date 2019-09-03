@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\edge">
+      <UniqueIdentifier>{4c7512de-1f95-4c7a-8404-ffd4924173ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\segm">
+      <UniqueIdentifier>{52b2e077-25c7-4d34-9470-9b5c0baa9a22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\segm">
+      <UniqueIdentifier>{fbc9bc8d-1468-4cc9-93cf-8438e91ef273}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\edge">
+      <UniqueIdentifier>{f7e4e7be-c003-4279-8134-f0567cb5316b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="edge\BgImage.cpp">
+      <Filter>Source Files\edge</Filter>
+    </ClCompile>
+    <ClCompile Include="edge\BgEdge.cpp">
+      <Filter>Source Files\edge</Filter>
+    </ClCompile>
+    <ClCompile Include="edge\BgEdgeDetect.cpp">
+      <Filter>Source Files\edge</Filter>
+    </ClCompile>
+    <ClCompile Include="edge\BgEdgeList.cpp">
+      <Filter>Source Files\edge</Filter>
+    </ClCompile>
+    <ClCompile Include="edge\BgGlobalFc.cpp">
+      <Filter>Source Files\edge</Filter>
+    </ClCompile>
+    <ClCompile Include="segm\rlist.cpp">
+      <Filter>Source Files\segm</Filter>
+    </ClCompile>
+    <ClCompile Include="segm\ms.cpp">
+      <Filter>Source Files\segm</Filter>
+    </ClCompile>
+    <ClCompile Include="segm\msImageProcessor.cpp">
+      <Filter>Source Files\segm</Filter>
+    </ClCompile>
+    <ClCompile Include="segm\msSysPrompt.cpp">
+      <Filter>Source Files\segm</Filter>
+    </ClCompile>
+    <ClCompile Include="segm\RAList.cpp">
+      <Filter>Source Files\segm</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="edge\BgImage.h">
+      <Filter>Header Files\edge</Filter>
+    </ClInclude>
+    <ClInclude Include="edge\BgDefaults.h">
+      <Filter>Header Files\edge</Filter>
+    </ClInclude>
+    <ClInclude Include="edge\BgEdge.h">
+      <Filter>Header Files\edge</Filter>
+    </ClInclude>
+    <ClInclude Include="edge\BgEdgeDetect.h">
+      <Filter>Header Files\edge</Filter>
+    </ClInclude>
+    <ClInclude Include="segm\tdef.h">
+      <Filter>Header Files\segm</Filter>
+    </ClInclude>
+    <ClInclude Include="segm\ms.h">
+      <Filter>Header Files\segm</Filter>
+    </ClInclude>
+    <ClInclude Include="segm\msImageProcessor.h">
+      <Filter>Header Files\segm</Filter>
+    </ClInclude>
+    <ClInclude Include="segm\msSys.h">
+      <Filter>Header Files\segm</Filter>
+    </ClInclude>
+    <ClInclude Include="segm\RAList.h">
+      <Filter>Header Files\segm</Filter>
+    </ClInclude>
+    <ClInclude Include="segm\rlist.h">
+      <Filter>Header Files\segm</Filter>
+    </ClInclude>
+    <ClInclude Include="edge\BgEdgeList.h">
+      <Filter>Header Files\edge</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="segm\MSReadme.txt" />
+  </ItemGroup>
+</Project>
