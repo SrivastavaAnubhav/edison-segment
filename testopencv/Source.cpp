@@ -8,44 +8,25 @@
 
 using namespace std;
 int main() {
-	int height, width;
-
-	unsigned char* inputHsv_;
-	unsigned char* inputHue_;
-	float* weightMap_;
-	unsigned char* filtImage_;
-	unsigned char* segmImage_;
-	//store the output edges and boundaries
-	int* edges_, numEdges_;
-	int* boundaries_, numBoundaries_;
 	//parameters for mean shift
-	int sigmaS;     //spatial bandwidth
-	float sigmaR;       //range bandwidth
-	int minRegion;  //area of the smallest objects to consider
+	const int sigmaS = 7;           //spatial bandwidth
+	const float sigmaR = 6.5;       //range bandwidth
+	const int minRegion = 20;       //area of the smallest objects to consider
 	//parameters for synergistic segmentation
-	int gradWindRad; //Gradient Window Radius
-	float threshold; //Edge Strength Threshold [0,1]
-	float mixture;   //Mixture Parameter [0,1]
+	const int gradWindRad = 2;      //Gradient Window Radius
+	const float threshold = 0.3F;   //Edge Strength Threshold [0,1]
+	const float mixture = 0.2F;     //Mixture Parameter [0,1]
+	const SpeedUpLevel speedup = MED_SPEEDUP;
 
-	sigmaS = 7;
-	sigmaR = 6.5;
-	minRegion = 20;
-	gradWindRad = 2;
-	threshold = 0.3F;
-	mixture = 0.2F;
-
-
-	// Load the image
-	cv::Mat src_bgr = cv::imread("rose.png"); // Reads as BGR
+	// Load the image (as BGR) then convert to RGB
+	const cv::Mat src_bgr = cv::imread("rose.png");
 	cv::Mat src;
 	cv::cvtColor(src_bgr, src, cv::COLOR_BGR2RGB);
-	if (!src.data) {
-		return -1;
-	}
+	assert(src.data != nullptr);
 
 	// Convert to char buffer
-	height = src.rows;
-	width = src.cols;
+	const int height = src.rows;
+	const int width = src.cols;
 	uchar* image_buf;
 	if (src.isContinuous()) {
 		image_buf = src.data;
@@ -62,7 +43,8 @@ int main() {
 	BgImage bgImage;
 	bgImage.SetImage(image_buf, width, height, true);
 	edgeDetector.ComputeEdgeInfo(&bgImage, confMap.data(), gradMap.data());
-	//compute the weight map
+
+	// Compute weight map
 	for (int i = 0; i < width * height; i++) {
 		if (gradMap[i] > 0.02) {
 			weightMap[i] = mixture * gradMap[i] + (1 - mixture) * confMap[i];
@@ -72,20 +54,34 @@ int main() {
 		}
 	}
 
-
-
-
-
 	msImageProcessor iProc;
 	iProc.DefineImage(image_buf, COLOR, height, width);
 	assert(!iProc.ErrorStatus);
+	iProc.SetWeightMap(weightMap.data(), threshold);
+	assert(!iProc.ErrorStatus);
+	iProc.Filter(sigmaS, sigmaR, speedup);
+	assert(!iProc.ErrorStatus);
+    iProc.FuseRegions(sigmaR, minRegion);
+	assert(!iProc.ErrorStatus);
 
-	//uchar* defined_image = new uchar[height * width * 3];
-	//iProc.GetResults(defined_image);
-	//cv::Mat defined(height, width, CV_8UC4, defined_image);
+	int* labels;
+	float* modes;
+	int* modePointCounts;
+	const int regionCount = iProc.GetRegions(&labels, &modes, &modePointCounts);
 
-	// Show source image
-	cv::imshow("Source Image", src);
+	// Can be uncommented if you want to visualize the final image
+	//vector<float> final_image_luv_vec(height * width * 3);
+	//for (int i = 0; i < height * width; ++i) {
+	//	const int label = labels[i];
+	//	for (int dim = 0; dim < 3; ++dim) {
+	//		final_image_luv_vec[i * 3 + dim] = modes[labels[i] * 3 + dim];
+	//	}
+	//}
+	//cv::Mat final_image_luv(height, width, CV_32FC3, final_image_luv_vec.data());
+	//cv::Mat final_image_bgr;
+	//cv::cvtColor(final_image_luv, final_image_bgr, cv::COLOR_Luv2BGR);
+	//cv::imshow("Source Image", final_image_bgr);
+
 	cv::waitKey(0);
 	return 0;
 }
